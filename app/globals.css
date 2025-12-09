@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-deep-carbon: #0a0a0a;
+  --color-dark-gray: #1a1a1a;
+  --color-neon-green: #ccff00;
+  --color-bright-orange: #ff6600;
+
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-orbitron), sans-serif;
+
+  --image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --image-gradient-conic: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
+}
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 10, 10, 10;
+  --background-end-rgb: 26, 26, 26;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar for cyberpunk feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ccff00;
+}
