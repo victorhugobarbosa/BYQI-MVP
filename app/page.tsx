@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowRight, Zap, CheckCircle2, Instagram, Linkedin, Mail } from 'lucide-react';
+import Image from 'next/image';
 
 /* -------------------------------------------------------------
  * Component: Navbar
@@ -10,6 +11,7 @@ import { Menu, X, ArrowRight, Zap, CheckCircle2, Instagram, Linkedin, Mail } fro
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const basePath = '/BYQI-MVP';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -28,7 +30,7 @@ const Navbar = () => {
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-deep-carbon/90 backdrop-blur-md border-b border-white/5 py-4' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <img src="/logo_nobg.png" alt="BYQI Logo" className="h-24 w-auto object-contain" />
+          <Image src={`${basePath}/logo_nobg.png`} alt="BYQI Logo" width={96} height={96} className="h-24 w-auto object-contain" />
         </div>
 
         {/* Desktop Nav */}
@@ -127,6 +129,7 @@ const Hero = () => {
  * ------------------------------------------------------------- */
 const Models = () => {
   const [selectedModel, setSelectedModel] = useState<any>(null);
+  const basePath = '/BYQI-MVP';
 
   const models = [
     {
@@ -135,7 +138,7 @@ const Models = () => {
       type: "Performance",
       speed: "160km/h",
       power: "Elétrica",
-      image: "/new_model_1.jpg",
+      image: `${basePath}/new_model_1.jpg`,
       color: "neon-green",
       details: {
         description: "A revolução em duas rodas. Potência instantânea e design agressivo para quem busca adrenalina sem emissões.",
@@ -155,7 +158,7 @@ const Models = () => {
       type: "Logística",
       speed: "80km/h",
       power: "Dual Battery",
-      image: "/new_model_2.jpg",
+      image: `${basePath}/new_model_2.jpg`,
       color: "bright-orange",
       details: {
         description: "A aliada perfeita para o seu negócio. Robusta, confiável e econômica.",
@@ -175,7 +178,7 @@ const Models = () => {
       type: "Cidade",
       speed: "60km/h",
       power: "Compacta",
-      image: "/old_model_1.jpg",
+      image: `${basePath}/old_model_1.jpg`,
       color: "neon-green",
       details: {
         description: "Agilidade para o dia a dia urbano. Compacta, leve e estilosa.",
@@ -191,7 +194,7 @@ const Models = () => {
       type: "Legado",
       speed: "Vintage",
       power: "Híbrida",
-      image: "/old_model_2.jpg",
+      image: `${basePath}/old_model_2.jpg`,
       color: "gray-400",
       details: {
         description: "O charme do clássico com a tecnologia do futuro.",
@@ -225,10 +228,11 @@ const Models = () => {
             >
               {/* Image Background */}
               <div className="absolute inset-0">
-                <img
+                <Image
                   src={model.image}
                   alt={model.name}
-                  className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
+                  fill
+                  className="object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-deep-carbon via-deep-carbon/50 to-transparent"></div>
               </div>
@@ -272,7 +276,7 @@ const Models = () => {
             >
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="h-64 md:h-auto relative">
-                  <img src={selectedModel.image} alt={selectedModel.name} className="absolute inset-0 w-full h-full object-cover" />
+                  <Image src={selectedModel.image} alt={selectedModel.name} fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-deep-carbon to-transparent md:bg-gradient-to-r"></div>
                 </div>
                 <div className="p-8">

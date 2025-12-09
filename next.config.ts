@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export", // Required for GitHub Pages
+  basePath: "/BYQI-MVP", // Ensure assets are served correctly on GitHub Pages
   images: {
     unoptimized: true, // Required for static export
   },
